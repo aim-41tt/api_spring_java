@@ -1,14 +1,15 @@
-# Используйте официальный образ Java
 FROM openjdk:8-jre-alpine
 
-# Создайте директорию приложения в контейнере
+# директория
 WORKDIR /app
 
-# Копируйте JAR-файл в директорию приложения
-COPY api_AIntelligence_jar-0.0.3.jar /app/api_AIntelligence_jar-0.0.3.jar
+# JAR-файл
+COPY target/api_AIntelligence_jar-0.0.3.jar /app/api_AIntelligence_jar-0.0.3.jar
 
-# Установите порт, который ваше приложение будет слушать
+# директория DataSet
+COPY DataSet /app/DataSet
+
+# port
 EXPOSE 8080
 
-# Запустите приложение при запуске контейнера
 CMD ["java", "-jar", "api_AIntelligence_jar-0.0.3.jar"]
